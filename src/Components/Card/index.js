@@ -15,7 +15,7 @@ const options = {
     output_language: 'en'
   },
   headers: {
-    'X-RapidAPI-Key': 'f74ff156famshc8228337ff50d32p139e74jsn7f17abdef1e5',
+    'X-RapidAPI-Key': '579281897emsh659eb180b175647p19145cjsn5f9708de3429',
     'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
   }
 };
@@ -36,18 +36,14 @@ export default function Card(props) {
         var listaGeral = []
         var geralStreaming = []
         var geralLinks = []
-        while (contador < 5) {
+        while (contador < 8) {
           //titulo
           let titulo = response.data.result[n]['title']
-          var titulos = titulosFilmes
           if (!titulos.includes(titulo) && response.data.result[n]['streamingInfo'][pais]) {
-            titulos.push(titulo)
-            setTitulosFilmes(titulos)
-          
+            titulos.push(titulo)          
           
             //generos
             let generos = response.data.result[n]['genres']
-            var listaGeral = generosFilmes
             var listaGeneros = [];
             for (var i = 0; i < generos.length; i++) {
               if (!listaGeneros.includes(generos[i]['name'])) {
@@ -55,12 +51,9 @@ export default function Card(props) {
               }
             }
             listaGeral.push(listaGeneros)
-            setGenerosFilmes(listaGeral)
       
             //streaming e link
             let streamings = response.data.result[n]['streamingInfo'][pais]
-            var geralStreaming = streamingsFilmes
-            var geralLinks = linksFilmes
             var listaStreamings = [];
             var listaLinks = [];
             for (var i = 0; i < streamings.length; i++) {
@@ -71,22 +64,18 @@ export default function Card(props) {
             }
             geralStreaming.push(listaStreamings)
             geralLinks.push(listaLinks)
-            setStreamingsFilmes(geralStreaming)
-            setLinksFilmes(geralLinks)
             contador++;
-            console.log('contador ' + contador)
           } 
           n++;
         }
-  
+        setTitulosFilmes(titulos)
+        setGenerosFilmes(listaGeral)
+        setStreamingsFilmes(geralStreaming)
+        setLinksFilmes(geralLinks)
+
         } catch (error) {
         console.error(error);
       }   
-
-    console.log(titulosFilmes)
-    console.log(generosFilmes)
-    console.log(streamingsFilmes)
-    console.log(linksFilmes)  
   }
 
   
@@ -100,23 +89,23 @@ export default function Card(props) {
   }, [props.rodaAPI]);
 
   return (
-    <div className="App">
+    <div className="card-container">
       {titulosFilmes.map((titulosFilmes, index) => (
-        <div key={index} className="movie-card">
-          <h2>Title: {titulosFilmes}</h2>
+        <div key={index} className="card">
+          <h3 class="card-title">{titulosFilmes}</h3>
           <div>
-            <h3>Genres:</h3>
-            <ul>
+            <ul className="card-content">
               {generosFilmes[index].map((genre, genreIndex) => (
                 <li key={genreIndex}>{genre}</li>
               ))}
             </ul>
           </div>
           <div>
-            <h3>Streaming Services:</h3>
-            <ul>
+          <ul className="card-content">
               {streamingsFilmes[index].map((service, serviceIndex) => (
-                <li key={serviceIndex}>{service}</li>
+                <li key={serviceIndex}>
+                  <a href={linksFilmes[index][serviceIndex]}>{service}</a>
+                </li>
               ))}
             </ul>
           </div>

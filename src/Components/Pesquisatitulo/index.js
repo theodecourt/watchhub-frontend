@@ -26,9 +26,9 @@ export default function Pesquisatitulo(props) {
 
   return (
   <form method="post" onSubmit={pegaPesquisa} className="header">
-    <input id="titulo" type="text" name="titulo" placeholder="Selecionar título" onChange={pegaTitulo} value={titulo} />
+    <input id="titulo" type="text" name="titulo" placeholder="Movie's title" onChange={pegaTitulo} value={titulo} />
     <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} setSelectedCountry={setSelectedCountry} />
-    <input type="submit" value="PESQUISAR" className="bold-text"/>
+    <input type="submit" value="SEARCH" className="bold-text"/>
   </form>
   );
 }

@@ -23,7 +23,7 @@ const Modal = (props) => {
       <div className="modal-content">
         <Select
           options={countries}
-          placeholder="Selecionar país" 
+          placeholder="Where are you?" 
           onChange={(selectedOption) => {
             props.setSelectedCountry(selectedOption);
             props.onClose();

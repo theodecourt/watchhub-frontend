@@ -11,7 +11,7 @@
     border-radius: 0.6rem;
     box-shadow: 0.4rem 0.3rem 0.8rem rgba(136, 134, 134, 0.6);
     width: 15rem;
-    height: 9rem;
+    height: 20rem;
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 3rem;
@@ -25,7 +25,6 @@
   }
   
   .card-content{
-    display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 2.5rem;
