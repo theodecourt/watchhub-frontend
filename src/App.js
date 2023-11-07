@@ -22,7 +22,7 @@ function App() {
         <div className="big-text">
           Find where to watch <br /> any movie you want.
         </div>
-        <Pesquisatitulo apareceCards={() => setApareceCards(true)} setTituloPesquisa={setTituloPesquisa} setPaisPesquisa={setPaisPesquisa} roda={() => setRodaAPI(true)}/>
+        <Pesquisatitulo apareceCards={() => setApareceCards(true)} setTituloPesquisa={setTituloPesquisa} tituloPesquisa={tituloPesquisa} setPaisPesquisa={setPaisPesquisa} roda={() => setRodaAPI(true)}/>
       </div>
       )
 

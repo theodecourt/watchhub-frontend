@@ -26,10 +26,10 @@
 /* Style for the submit button */
 /* Style for the input fields with a wider and roundier appearance */
 .header input[type="text"] {
-  width: 20rem; /* Increase the width to make the input wider */
+  width: 20rem;
   padding: 15px;
   margin-right: 10px;
-  border: none;
+  border: .1rem solid gray; /* Set border style, width, and color */
   border-radius: 20px;
 }
 
@@ -47,6 +47,16 @@
 /* Style for the submit button on hover */
 .header input[type="submit"]:hover {
   background-color: darkred;
+}
+
+.star-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.star-icon.favorited {
+  filter: brightness(1.5); /* Change the star icon's appearance when favorited */
 }
 
 

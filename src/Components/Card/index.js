@@ -15,7 +15,7 @@ const options = {
     output_language: 'en'
   },
   headers: {
-    'X-RapidAPI-Key': '579281897emsh659eb180b175647p19145cjsn5f9708de3429',
+    'X-RapidAPI-Key': '68583c2262msh5d9c2b0c008fd4cp1a943ajsn1e3f1590679a',
     'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
   }
 };
@@ -25,10 +25,13 @@ export default function Card(props) {
   const [generosFilmes, setGenerosFilmes] = useState([])
   const [streamingsFilmes, setStreamingsFilmes] = useState([])
   const [linksFilmes, setLinksFilmes] = useState([])
+  const [achouFilme, setAchouFilme] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   const pais = props.pais
 
   async function fetchData() {  
       try {
+        setAchouFilme(true)
         const response = await axios.request(options);
         var n = 0;
         var contador = 0;
@@ -36,7 +39,7 @@ export default function Card(props) {
         var listaGeral = []
         var geralStreaming = []
         var geralLinks = []
-        while (contador < 8) {
+        while (contador < 10 && n < 25) {
           //titulo
           let titulo = response.data.result[n]['title']
           if (!titulos.includes(titulo) && response.data.result[n]['streamingInfo'][pais]) {
@@ -74,6 +77,7 @@ export default function Card(props) {
         setLinksFilmes(geralLinks)
 
         } catch (error) {
+        setAchouFilme(false)
         console.error(error);
       }   
   }
@@ -89,10 +93,11 @@ export default function Card(props) {
   }, [props.rodaAPI]);
 
   return (
+    achouFilme ? (
     <div className="card-container">
       {titulosFilmes.map((titulosFilmes, index) => (
         <div key={index} className="card">
-          <h3 class="card-title">{titulosFilmes}</h3>
+          <h3 className="card-title">{titulosFilmes}</h3>
           <div>
             <ul className="card-content">
               {generosFilmes[index].map((genre, genreIndex) => (
@@ -112,5 +117,11 @@ export default function Card(props) {
         </div>
       ))}
     </div>
+      ) : (  
+      <div>
+        We couldn't find any movie with this title
+      </div>
+      )
+
   );
 }
