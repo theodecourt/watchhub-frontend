@@ -34,3 +34,13 @@
     font-weight: normal;
     color: rgb(85, 82, 82);
   }
+
+  .erro-text{
+    color: black;
+    font-size: 3.5rem; /* Increase the font size as desired */
+    font-weight: bold; /* Use 'bold' for a thicker font */
+    text-align: center; /* Center the text horizontally */
+    line-height: 1.3; /* Adjust the line height as needed to control spacing between lines */
+    padding-top: 4rem;
+  }
+  

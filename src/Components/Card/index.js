@@ -33,6 +33,7 @@ export default function Card(props) {
       try {
         setAchouFilme(true)
         const response = await axios.request(options);
+        console.log(response)
         var n = 0;
         var contador = 0;
         var titulos = []
@@ -118,9 +119,9 @@ export default function Card(props) {
       ))}
     </div>
       ) : (  
-      <div>
-        We couldn't find any movie with this title
-      </div>
+      <h1 className="erro-text">
+        Movie not found <br/> search again 
+      </h1>
       )
 
   );
